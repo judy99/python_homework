@@ -2,13 +2,13 @@
 def hello():
   return "Hello!"
 
-print(f"Hello function returns: {hello()}")
+# print(f"Hello function returns: {hello()}")
 
 # Task 2: Greet with a Formatted String
 def greet(name):
   return "Hello, " + name + "!"
 
-print(f"Greet function returns: {greet('Ann')}")
+# print(f"Greet function returns: {greet('Ann')}")
 
 # Task 3: Calculator
 # operation: add, subtract, multiply, divide, modulo, int_divide (for integer division) and power
@@ -48,7 +48,7 @@ def calc(a, b, operation="multiply"):
             print("Unknown operation.")
     return result
 
-print(f"Add: {calc(1,2,"add")}")
+# print(f"Add: {calc(1,2,"add")}")
 
 # Task 4: Data Type Conversion
 def data_type_conversion(value, name):
@@ -138,7 +138,7 @@ def titleize(s):
             res = f"{res} {word}"
     return res.strip()
 
-print(titleize("hello in at Friday wd!"))
+# print(titleize("hello in at Friday wd!"))
 
 # Task 9: Hangman, with more String Operations
 def hangman(secret, guess):
