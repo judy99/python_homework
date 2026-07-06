@@ -8,7 +8,7 @@ print(f"Hello function returns: {hello()}")
 def greet(name):
   return "Hello, " + name + "!"
 
-print(f"Greet function returns: {greet("Ann")}")
+print(f"Greet function returns: {greet('Ann')}")
 
 # Task 3: Calculator
 # operation: add, subtract, multiply, divide, modulo, int_divide (for integer division) and power
@@ -115,6 +115,7 @@ def repeat(s, count):
 def student_scores(p, **kwargs):
     score = 0
     best = None
+    best_value = None
     
     for key, value in kwargs.items():
         score = score + value
