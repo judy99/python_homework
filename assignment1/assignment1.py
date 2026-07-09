@@ -2,53 +2,35 @@
 def hello():
   return "Hello!"
 
-# print(f"Hello function returns: {hello()}")
-
 # Task 2: Greet with a Formatted String
 def greet(name):
-  return "Hello, " + name + "!"
-
-# print(f"Greet function returns: {greet('Ann')}")
+  return f"Hello, {name}!"
 
 # Task 3: Calculator
 # operation: add, subtract, multiply, divide, modulo, int_divide (for integer division) and power
 def calc(a, b, operation="multiply"):
-    result = None
     try:
-        a_float = float(a)
-        b_float = float(b)
-    except ValueError:
-        return "You can't " + operation + " those values!"
-    
-    match operation:
-        case "add":
-            result = a_float + b_float
-        case "subtract":
-            result = a_float - b_float
-        case "multiply":
-            result = a_float * b_float
-        case "divide":
-            try:
-                result = a_float / b_float
-            except ZeroDivisionError:
-                return "You can't divide by 0!"
-        case "modulo":
-            try:
-                result = int(a_float) % int(b_float)
-            except ZeroDivisionError:
-                return "You can't divide by 0!"
-        case "int_divide":
-            try:
-                result = int(a_float) // int(b_float)
-            except ZeroDivisionError:
-                return "You can't divide by 0!"
-        case "power":
-            result = a_float ** int(b_float)
-        case _:
-            print("Unknown operation.")
-    return result
-
-# print(f"Add: {calc(1,2,"add")}")
+        match operation:
+            case "add":
+                return a + b
+            case "subtract":
+                return a - b
+            case "multiply":
+                return a * b
+            case "divide":
+                return a/b
+            case "modulo":
+                return a % b
+            case "int_divide":
+                return a // b
+            case "power":
+                return a ** b
+            case _:
+                print("Unknown operation.")
+    except ZeroDivisionError:
+        return "You can't divide by 0!"
+    except TypeError:
+        return f"You can't {operation} those values!"
 
 # Task 4: Data Type Conversion
 def data_type_conversion(value, name):
@@ -57,39 +39,27 @@ def data_type_conversion(value, name):
         case "float":
             try:
                 return float(value)
-            except:
+            except ValueError:
                 return error_str
         case "int":
             try:
                 return int(value)
-            except:
+            except ValueError:
                 return error_str
         case "str":
-            try:
-                return str(value)
-            except:
-                return error_str
+            return str(value)
         case _:
             return error_str
-        
-data_type_conversion(5, "str")
-data_type_conversion(5, "float")
-data_type_conversion(5, "int")
-data_type_conversion(5.4, "str")
-data_type_conversion(5.4, "float")
-data_type_conversion(5.4, "int")
-data_type_conversion("1", "int")
-data_type_conversion("1.2", "float")
-data_type_conversion("1.2", "int")
-data_type_conversion("1.34", "str")
-data_type_conversion("qwerty", "float")
-        
+                
 # Task 5: Grading System, Using *args
 def grade(*args):
     try:
-        avg_res = int(sum(args)/len(args))
-    except:
+        avg_res = sum(args)/len(args)
+    except TypeError:
         return "Invalid data was provided."
+    except ZeroDivisionError:
+        return "Invalid data was provided."
+    
     if (avg_res >= 90):
         return "A"
     elif (avg_res >= 80):
@@ -100,7 +70,6 @@ def grade(*args):
         return "D"
     else:
         return "F"
-
 
 grade(85, 90, 76)
 
@@ -119,7 +88,7 @@ def student_scores(p, **kwargs):
     
     for key, value in kwargs.items():
         score = score + value
-        if (best == None or value > best_value):
+        if best is None or value > best_value:
             best_value = value
             best = key
     if (p == "mean"):
@@ -138,32 +107,21 @@ def titleize(s):
             res = f"{res} {word}"
     return res.strip()
 
-# print(titleize("hello in at Friday wd!"))
-
 # Task 9: Hangman, with more String Operations
 def hangman(secret, guess):
     res = ""
-    current_res = ""
-    for i in range(len(guess)):
-        current_res = ""
-        j = 0
-        for j in range(len(secret)):
-            if secret[j] == guess[i]:
-                current_res = current_res + guess[i]
-            elif len(res) > 0 and res[j] != "_":
-                current_res = current_res + res[j]
-            else:
-                current_res = current_res + "_"
-        res = current_res
+    for i in range(len(secret)):
+        if secret[i] in guess:
+            res = res + secret[i]
+        else:
+            res = res + "_"
     return res
-
-hangman("difficulty","ic")
 
 # Task 10: Pig Latin, Another String Manipulation Exercise
 def pig_latin(origin):  
     latin_sentence = []
     origin_words = origin.split()
-    vowels = "aeoui"
+    vowels = "aeiou"
     latin_word = ""
     
     for word in origin_words:
@@ -181,8 +139,4 @@ def pig_latin(origin):
                     i += 1
             latin_word = word[i:] + to_end + "ay"
         latin_sentence.append(latin_word)
-    return " ".join(latin_sentence)
-pig_latin("apple")                
-                
-            
-    
+    return " ".join(latin_sentence)                
