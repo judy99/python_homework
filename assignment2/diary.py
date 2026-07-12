@@ -6,6 +6,7 @@ init_question = "What happened today? "
 question = "What else? "
 stop_line = "done for now"
 current_text = ""
+result_text = ""
 
 try:
     with open('diary.txt', 'a') as file:
@@ -31,3 +32,5 @@ except Exception as e:
     if message:
         print(f"Exception message: {message}")
     print(f"Stack trace: {stack_trace}")
+
+# Task 2: Read a CSV File
