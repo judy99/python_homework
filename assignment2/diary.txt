@@ -1,6 +1,4 @@
 hello
-hi
-hohohhoohh
-blahblahblah
-good day
-bye
+world!
+new day
+hello again
