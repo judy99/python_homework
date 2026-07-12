@@ -9,11 +9,18 @@ current_text = ""
 
 try:
     with open('diary.txt', 'a') as file:
-        current_text = input(init_question)
-        while current_text != stop_line:
-            file.write(current_text + '\n')
-            current_text = input(question)
+        first_question = True
         
+        while True:
+            if first_question:
+                current_text = input(init_question)
+                first_question = False
+            else:
+                current_text = input(question)
+                
+            file.write(current_text + '\n')
+            if current_text == stop_line:
+                break
 except Exception as e:
     trace_back = traceback.extract_tb(e.__traceback__)
     stack_trace = list()
