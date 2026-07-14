@@ -1,6 +1,18 @@
 import csv, traceback
 from datetime import datetime
 
+def handle_exception(e):
+    trace_back = traceback.extract_tb(e.__traceback__)
+    stack_trace = list()
+    for trace in trace_back:
+        stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
+    print(f"Exception type: {type(e).__name__}")
+    message = str(e)
+    if message:
+        print(f"Exception message: {message}")
+    print(f"Stack trace: {stack_trace}")
+
+
 def read_employees():
     dict = {}
     list = []
@@ -17,15 +29,7 @@ def read_employees():
             dict['rows'] = list
         return dict
     except Exception as e:
-        trace_back = traceback.extract_tb(e.__traceback__)
-        stack_trace = list()
-        for trace in trace_back:
-            stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
-        print(f"Exception type: {type(e).__name__}")
-        message = str(e)
-        if message:
-            print(f"Exception message: {message}")
-        print(f"Stack trace: {stack_trace}")
+        handle_exception(e)
 
 employees = read_employees()
 print(employees)
@@ -42,8 +46,8 @@ def first_name(row_number):
         col_index = employees["fields"].index("first_name")
         res_row = employees["rows"][row_number]
         return res_row[col_index]
-    except ValueError:
-        print("You must enter a number.")
+    except Exception as e:
+        handle_exception(e)
 
 # Task 5: Find the Employee: a Function in a Function
 def employee_find(employee_id):
@@ -110,15 +114,7 @@ def read_minutes():
                 dict["rows"] = list(tuple(row) for row in reader)
             return dict
         except Exception as e:
-            trace_back = traceback.extract_tb(e.__traceback__)
-            stack_trace = list()
-            for trace in trace_back:
-                stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
-            print(f"Exception type: {type(e).__name__}")
-            message = str(e)
-            if message:
-                print(f"Exception message: {message}")
-            print(f"Stack trace: {stack_trace}")
+            handle_exception(e)
     
     read_file("../csv/minutes1.csv", minutes1)
     read_file("../csv/minutes2.csv", minutes2)

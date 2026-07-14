@@ -1,4 +1,6 @@
 hello
-world!
-new day
 hello again
+done for now
+hew day!
+hello world
+done for now
