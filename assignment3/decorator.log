@@ -1,0 +1,25 @@
+function: greet1
+positional parameters: None
+keyword parameters: None
+return: None
+********************************
+function: greet2
+positional parameters: ('Anna', 30, 'CEO')
+keyword parameters: None
+return: True
+********************************
+function: greet2
+positional parameters: ('Anna', 30, 15, '12345', (1, 2, 3, 4, 5))
+keyword parameters: None
+return: True
+********************************
+function: greet3
+positional parameters: None
+keyword parameters: {'name': 'Anna', 'age': 30, 'points': (1, 2, 3, 4, 5)}
+return: <function logger_decorator at 0x100a6a660>
+********************************
+function: greet3
+positional parameters: None
+keyword parameters: {'age': 30, 'points': (1, 2, 3, 4, 5)}
+return: <function logger_decorator at 0x100a6a660>
+********************************
