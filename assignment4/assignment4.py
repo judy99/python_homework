@@ -67,6 +67,7 @@ clean_data["Age"] = pd.to_numeric(clean_data["Age"], errors="coerce")
 print(f"\nclean_data Age: \n{clean_data}")
 
 # Convert Salary to numeric and replace known placeholders (unknown, n/a) with NaN
+clean_data["Salary"] = clean_data["Salary"].replace(["unknown", "n/a"], "NaN")
 clean_data["Salary"] = pd.to_numeric(clean_data["Salary"], errors="coerce")
 print(f"\nclean_data Salary: \n{clean_data}")
 
@@ -81,10 +82,12 @@ print(f"\nclean_data mean/median: \n{clean_data}")
 # Convert Hire Date to datetime
 clean_data["Hire Date"] = pd.to_datetime(clean_data["Hire Date"], format='mixed', errors="coerce")
 print(f"\nclean_data Date: \n{clean_data}")
+# Remove rows where Hire Date could not be converted
+clean_data = clean_data.dropna(subset=["Hire Date"])
 
 # Strip extra whitespace and standardize Name and Department as uppercase
 clean_data["Name"] = clean_data["Name"].str.strip()
-clean_data["Name"] = clean_data["Name"].str.upper()
 clean_data["Department"] = clean_data["Department"].str.strip()
+clean_data["Name"] = clean_data["Name"].str.upper()
 clean_data["Department"] = clean_data["Department"].str.upper()
 print(f"\nclean_data standardize: \n{clean_data}")
