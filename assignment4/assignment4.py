@@ -82,8 +82,6 @@ print(f"\nclean_data mean/median: \n{clean_data}")
 # Convert Hire Date to datetime
 clean_data["Hire Date"] = pd.to_datetime(clean_data["Hire Date"], format='mixed', errors="coerce")
 print(f"\nclean_data Date: \n{clean_data}")
-# Remove rows where Hire Date could not be converted
-clean_data = clean_data.dropna(subset=["Hire Date"])
 
 # Strip extra whitespace and standardize Name and Department as uppercase
 clean_data["Name"] = clean_data["Name"].str.strip()
