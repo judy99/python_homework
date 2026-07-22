@@ -67,7 +67,7 @@ clean_data["Age"] = pd.to_numeric(clean_data["Age"], errors="coerce")
 print(f"\nclean_data Age: \n{clean_data}")
 
 # Convert Salary to numeric and replace known placeholders (unknown, n/a) with NaN
-clean_data["Salary"] = clean_data["Salary"].replace(["unknown", "n/a"], "NaN")
+clean_data["Salary"] = clean_data["Salary"].replace(["unknown", "n/a"], pd.NA)
 clean_data["Salary"] = pd.to_numeric(clean_data["Salary"], errors="coerce")
 print(f"\nclean_data Salary: \n{clean_data}")
 
