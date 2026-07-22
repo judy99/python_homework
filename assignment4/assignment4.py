@@ -84,6 +84,6 @@ clean_data["Hire Date"] = pd.to_datetime(clean_data["Hire Date"], format='mixed'
 print(f"\nclean_data Date: \n{clean_data}")
 
 # Strip extra whitespace and standardize Name and Department as uppercase
-clean_data["Name"] = clean_data["Name"].str.strip().str.capitalize()
+clean_data["Name"] = clean_data["Name"].str.strip().str.upper()
 clean_data["Department"] = clean_data["Department"].str.strip().str.upper()
 print(f"\nclean_data standardize: \n{clean_data}")
